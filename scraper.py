@@ -127,7 +127,3 @@ def do_scrape():
     # Post each result to slack.
     for result in all_results:
         post_listing_to_slack(sc, result)
-    
-    return all_results
-    
-results = do_scrape()
