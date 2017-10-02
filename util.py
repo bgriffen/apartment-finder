@@ -35,10 +35,11 @@ def post_listing_to_slack(sc, listing):
     :param sc: A slack client.
     :param listing: A record of the listing.
     """
-    desc = "{0} | {1} | {2} | {3} | <{4}>".format(listing["area"], listing["price"], listing["bart_dist"], listing["name"], listing["url"])
+    desc = "---\n Area: %s\n Description: %s\n Price: %s\n BART: %s | %3.2f km\n URL: <%s>\n" % (listing["area"],listing["name"],listing["price"],listing["bart"],listing["bart_dist"],listing["url"])
+                    #URL: <{4}>".format(, listing["price"], listing["bart_dist"], listing["name"], listing["url"])
     sc.api_call(
         "chat.postMessage", channel=settings.SLACK_CHANNEL, text=desc,
-        username='pybot', icon_emoji=':robot_face:'
+        username='HouseBot', icon_emoji=':robot_face:'
     )
 
 def find_points_of_interest(geotag, location):
